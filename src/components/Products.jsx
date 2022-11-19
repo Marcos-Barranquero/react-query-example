@@ -41,12 +41,13 @@ function Products() {
             </button>
             <input
               type='checkbox'
+              id={product.id}
               checked={product.inStock}
               onChange={e => {
                 updateProductMutation.mutate({ ...product, inStock: e.target.checked })
               }}
             />
-            <label htmlFor=''>In stock</label>
+            <label htmlFor={product.id}>In stock</label>
           </div>
         ))}
       </div>
