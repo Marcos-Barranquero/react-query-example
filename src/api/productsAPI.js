@@ -8,3 +8,5 @@ export const getProducts = async () => {
   const response = await productApi.get('/products')
   return response.data
 }
+
+export const createProduct = product => productApi.post('/products', product)

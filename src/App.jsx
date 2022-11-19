@@ -1,7 +1,13 @@
 import React from 'react'
 import Products from './components/Products'
+import CreateProductForm from './components/CreateProductForm'
 
-
-export default function App() {
-  return <Products />
+function App() {
+  return (
+    <>
+      <CreateProductForm />
+      <Products />
+    </>
+  )
 }
+export default App
