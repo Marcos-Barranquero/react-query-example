@@ -1,17 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { createProduct } from '../../api/productsAPI'
-import { handleSubmit } from './logic'
+import { useQueryClient } from '@tanstack/react-query'
+import { createAddProductMutation, handleSubmit } from './createProductLogic'
 
 function CreateProductForm() {
   const queryClient = useQueryClient()
-
-  const addProductMutation = useMutation({
-    mutationFn: createProduct,
-    onSuccess: () => {
-      console.log('Product added successfully')
-      queryClient.invalidateQueries('products')
-    },
-  })
+  const addProductMutation = createAddProductMutation(queryClient)
 
   return (
     <form onSubmit={e => handleSubmit(e, addProductMutation)}>
@@ -28,5 +20,4 @@ function CreateProductForm() {
     </form>
   )
 }
-
 export default CreateProductForm
