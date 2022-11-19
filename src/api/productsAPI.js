@@ -11,3 +11,4 @@ export const getProducts = async () => {
 
 export const createProduct = product => productApi.post('/products', { ...product, inStock: true })
 export const deleteProduct = product => productApi.delete(`/products/${product.id}`)
+export const updateProduct = product => productApi.put(`/products/${product.id}`, product)
