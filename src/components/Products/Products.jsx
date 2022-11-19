@@ -1,9 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { getProducts, deleteProduct, updateProduct } from '../../api/productsAPI'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { getProducts } from '../../api/productsAPI'
+import Product from './Product'
 import { createDeleteProductMutation, createUpdateProductMutation, sortProducts } from './ProductsLogic'
 
 function Products() {
-  
   const { isLoading, data: products, isError, error } = useQuery({ queryKey: ['products'], queryFn: getProducts, select: sortProducts })
 
   const queryClient = useQueryClient()
@@ -23,9 +23,7 @@ function Products() {
       <div>
         {products.map(product => (
           <div key={product.id}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+            <Product {...product} />
             <button onClick={() => deleteClickHandler(product)}>Delete</button>
             <input type='checkbox' id={product.id} checked={product.inStock} onChange={e => updateClickHandler(e, product)} />
             <label htmlFor={product.id}>In stock</label>
