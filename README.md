@@ -19,4 +19,5 @@ You'll need 2 terminals to run this project.
 Run `yarn install` to install all dependencies.
 
 Run `yarn dev` to start the react app.
+
 Run `yarn backend` to start the json-server.
