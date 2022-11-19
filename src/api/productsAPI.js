@@ -9,4 +9,4 @@ export const getProducts = async () => {
   return response.data
 }
 
-export const createProduct = product => productApi.post('/products', product)
+export const createProduct = product => productApi.post('/products', { ...product, inStock: true })

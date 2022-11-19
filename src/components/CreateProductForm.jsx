@@ -1,10 +1,23 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { createProduct } from '../api/productsAPI'
+
 function CreateProductForm() {
+  const queryClient = useQueryClient()
+
+  const addProductMutation = useMutation({
+    mutationFn: createProduct,
+    onSuccess: () => {
+      console.log('Product added successfully')
+      queryClient.invalidateQueries('products')
+    },
+  })
+
   const handleSubmit = e => {
     e.preventDefault()
     console.log('You clicked submit.')
     const formData = new FormData(e.target)
     const values = Object.fromEntries(formData)
-    console.log(values)
+    addProductMutation.mutate(values)
   }
 
   return (

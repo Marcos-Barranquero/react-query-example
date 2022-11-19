@@ -2,7 +2,13 @@ import { useQuery } from '@tanstack/react-query'
 import { getProducts } from '../api/productsAPI'
 
 function Products() {
-  const { isLoading, data: products, isError, error } = useQuery({ queryKey: ['products'], queryFn: getProducts })
+  const sortProducts = products => products.sort((a, b) => b.id - a.id)
+  const {
+    isLoading,
+    data: products,
+    isError,
+    error,
+  } = useQuery({ queryKey: ['products'], queryFn: getProducts, select: sortProducts })
 
   if (isLoading) return <div>Loading...</div>
   else if (isError) return <div>Error: {error.message}</div>
@@ -15,8 +21,8 @@ function Products() {
             <p>{product.description}</p>
             <p>{product.price}</p>
             <button>Delete</button>
-            <input type="checkbox" />
-            <label htmlFor="">In stock</label>
+            <input type='checkbox' />
+            <label htmlFor=''>In stock</label>
           </div>
         ))}
       </div>
