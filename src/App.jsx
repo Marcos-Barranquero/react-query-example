@@ -1,6 +1,6 @@
 import React from 'react'
-import Products from './components/Products'
-import CreateProductForm from './components/CreateProductForm'
+import Products from './components/Products/Products'
+import CreateProductForm from './components/CreateProductForm/CreateProductForm'
 
 function App() {
   return (

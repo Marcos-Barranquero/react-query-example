@@ -34,6 +34,13 @@
       "description": "headset gaming",
       "price": 400,
       "inStock": true
+    },
+    {
+      "name": "asd",
+      "description": "asd",
+      "price": "22",
+      "inStock": true,
+      "id": 6
     }
   ]
 }

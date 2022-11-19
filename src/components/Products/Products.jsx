@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { getProducts, deleteProduct, updateProduct } from '../api/productsAPI'
+import { getProducts, deleteProduct, updateProduct } from '../../api/productsAPI'
 
 function Products() {
   const sortProducts = products => products.sort((a, b) => b.id - a.id)

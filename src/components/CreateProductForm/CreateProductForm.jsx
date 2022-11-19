@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { createProduct } from '../api/productsAPI'
+import { createProduct } from '../../api/productsAPI'
+import { handleSubmit } from './logic'
 
 function CreateProductForm() {
   const queryClient = useQueryClient()
@@ -12,16 +13,8 @@ function CreateProductForm() {
     },
   })
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log('You clicked submit.')
-    const formData = new FormData(e.target)
-    const values = Object.fromEntries(formData)
-    addProductMutation.mutate(values)
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={e => handleSubmit(e, addProductMutation)}>
       <label htmlFor='name'>Name</label>
       <input type='text' name='name' id='name' />
 
